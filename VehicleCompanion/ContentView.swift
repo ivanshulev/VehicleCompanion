@@ -6,19 +6,22 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+    private let modelContext: ModelContext
+    
+    init(modelContext: ModelContext) {
+        self.modelContext = modelContext
     }
-}
-
-#Preview {
-    ContentView()
+    
+    var body: some View {
+        TabView {
+            GarageView(viewModel: GarageViewModel(modelContext: modelContext))
+                .tabItem {
+                    Label("Garage", systemImage: "car")
+                }
+        }
+        .navigationTitle("Vehicle Companion")
+    }
 }
