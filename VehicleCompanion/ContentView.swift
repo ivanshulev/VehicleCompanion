@@ -21,6 +21,12 @@ struct ContentView: View {
                 .tabItem {
                     Label("Garage", systemImage: "car")
                 }
+            
+            PlacesView(viewModel: PlacesViewModel(placesService: PlacesService(),
+                                                  modelContext: modelContext))
+                .tabItem {
+                    Label("Places", systemImage: "map")
+                }
         }
         .navigationTitle("Vehicle Companion")
     }
