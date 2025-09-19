@@ -45,11 +45,11 @@ class PlacesViewModel {
         case successful
     }
     
-    init(placesService: PlacesServiceType, modelContext: ModelContext) {
+    init(placesService: PlacesServiceType,
+         modelContext: ModelContext,
+         centerCoordinate: CLLocationCoordinate2D) {
         self.placesService = placesService
         self.modelContext = modelContext
-        let centerCoordinate = CLLocationCoordinate2D(latitude: 39.068586,
-                                                      longitude: -84.514571)
         self.centerCoordinate = centerCoordinate
         self.region = MKCoordinateRegion(center: centerCoordinate,
                                          span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))

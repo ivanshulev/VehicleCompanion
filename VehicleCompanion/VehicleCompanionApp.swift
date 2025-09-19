@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct VehicleCompanionApp: App {
+    let appConfig = AppConfig()
     let container: ModelContainer
     
     init() {
@@ -33,5 +34,6 @@ struct VehicleCompanionApp: App {
             ContentView(modelContext: container.mainContext)
         }
         .modelContainer(container)
+        .environment(\.appConfig, appConfig)
     }
 }

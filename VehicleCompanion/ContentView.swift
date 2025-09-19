@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    @Environment(\.appConfig) var appConfig: AppConfig
     private let modelContext: ModelContext
     
     init(modelContext: ModelContext) {
@@ -23,7 +24,8 @@ struct ContentView: View {
                 }
             
             PlacesView(viewModel: PlacesViewModel(placesService: PlacesService(),
-                                                  modelContext: modelContext))
+                                                  modelContext: modelContext,
+                                                  centerCoordinate: appConfig.defaultCenterCoordinate))
                 .tabItem {
                     Label("Places", systemImage: "map")
                 }
