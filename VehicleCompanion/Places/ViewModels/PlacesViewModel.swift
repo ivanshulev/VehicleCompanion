@@ -18,7 +18,7 @@ class PlacesViewModel {
     let centerCoordinateSubject = PassthroughSubject<CLLocationCoordinate2D, Never>()
     var centerCoordinate: CLLocationCoordinate2D
     var region: MKCoordinateRegion
-    var places: [Place] = []
+    private var places: [Place] = []
     var savedPlaces: [SavedPlace] = []
     var selectedTab: PlaceTab = .list
     var selectedPlace: Place?

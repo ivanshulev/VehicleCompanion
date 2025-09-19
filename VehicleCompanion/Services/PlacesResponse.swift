@@ -12,7 +12,7 @@ struct PlacesResponse: Codable {
     let pois: [Place]
 }
 
-struct Place: Codable, Identifiable {
+struct Place: Codable, Identifiable, Equatable {
     let id: Int
     let name: String
     let url: String?
@@ -50,4 +50,15 @@ struct Place: Codable, Identifiable {
         
         return CLLocationCoordinate2D(latitude: loc[1], longitude: loc[0])
     }
+    
+    static func == (lhs: Place, rhs: Place) -> Bool {
+        return lhs.id == rhs.id &&
+        lhs.name == rhs.name &&
+        lhs.url == rhs.url &&
+        lhs.primaryCategoryDisplayName == rhs.primaryCategoryDisplayName &&
+        lhs.rating == rhs.rating &&
+        lhs.v320x320URL == rhs.v320x320URL &&
+        lhs.loc == rhs.loc
+    }
 }
+

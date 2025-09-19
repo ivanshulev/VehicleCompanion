@@ -73,7 +73,7 @@ struct MapView: UIViewRepresentable {
                 return
             }
             
-            guard let selectedPlace = parent.viewModel.places.first(where: { $0.name == title }) else {
+            guard let selectedPlace = parent.viewModel.filteredPlaces.first(where: { $0.name == title }) else {
                 return
             }
             

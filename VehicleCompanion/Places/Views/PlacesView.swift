@@ -28,7 +28,7 @@ struct PlacesView: View {
                         Task { await viewModel.loadPlaces() }
                     }
                 case .successful:
-                    if viewModel.places.isEmpty {
+                    if viewModel.filteredPlaces.isEmpty {
                         PlacesEmptyView(message: viewModel.noPlacesMessage,
                                         refreshButtonTitle: viewModel.refreshButtonTitle) {
                             Task { await viewModel.loadPlaces() }
