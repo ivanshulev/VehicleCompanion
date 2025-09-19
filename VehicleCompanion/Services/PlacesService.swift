@@ -15,6 +15,11 @@ protocol PlacesServiceType {
 
 class PlacesService: PlacesServiceType {
     private let baseURL = "https://api2.roadtrippers.com/api/v2/pois/discover"
+    private let session: Session
+    
+    init(session: Session = .default) {
+        self.session = session
+    }
     
     func fetchPlaces(swCorner: CLLocationCoordinate2D, neCorner: CLLocationCoordinate2D) async throws -> [Place] {
         let parameters: Parameters = [
@@ -24,7 +29,7 @@ class PlacesService: PlacesServiceType {
         ]
         
         return try await withCheckedThrowingContinuation { continuation in
-            AF.request(baseURL, parameters: parameters)
+            session.request(baseURL, parameters: parameters)
                 .validate()
                 .responseDecodable(of: PlacesResponse.self) { response in
                     switch response.result {
